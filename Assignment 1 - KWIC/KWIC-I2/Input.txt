@@ -1,0 +1,4 @@
+We are Code Busters.
+We enjoy developing optimised code.
+We examine and evaluate each others code.
+We discuss better approaches and implement them.

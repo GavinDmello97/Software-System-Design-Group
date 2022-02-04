@@ -10,7 +10,6 @@ public class LineStorage {
     String newArray[] = new String[lines.length + 1];
     //copy original array into new array
     for (int i = 0; i < lines.length; i++) newArray[i] = lines[i];
-
     //add element to the new array
     newArray[newArray.length - 1] = line;
     lines = newArray;
