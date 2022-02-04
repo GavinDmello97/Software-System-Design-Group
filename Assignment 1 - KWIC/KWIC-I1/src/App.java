@@ -13,10 +13,10 @@ public class App {
   public static void main(String[] args) throws Exception {
     System.out.println("\nKWIC Implementation 1");
     /* Getting input from user */
-    String input = new Input().keyboard();
+    String[] input = new Input().keyboard();
 
     /* Passing input from user to Circular Shifter */
-    ArrayList<String> circularShiftResult = new CircularShifter()
+    ArrayList<ArrayList<String>> circularShiftResult = new CircularShifter()
     .generateAllStrings(input);
 
     /* 

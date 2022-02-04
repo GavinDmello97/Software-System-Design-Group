@@ -2,12 +2,18 @@ import java.util.ArrayList;
 
 public class CircularShifter {
 
-  public ArrayList<String> generateAllStrings(String string) {
-    String[] input = string.split(" ");
-    ArrayList<String> shiftedStrings = new ArrayList<String>();
-    for (int i = 0; i < input.length; i++) {
-      String[] shifted = rightShifter(input);
-      shiftedStrings.add(String.join(" ", shifted));
+  public ArrayList<ArrayList<String>> generateAllStrings(String[] stringArr) {
+    ArrayList<ArrayList<String>> shiftedStrings = new ArrayList<ArrayList<String>>();
+
+    for (var p = 0; p < stringArr.length; p++) {
+      ArrayList<String> currentStringArr = new ArrayList<String>();
+      String string = stringArr[p];
+      String[] input = string.split(" ");
+      for (int i = 0; i < input.length; i++) {
+        String[] shifted = rightShifter(input);
+        currentStringArr.add(String.join(" ", shifted));
+      }
+      shiftedStrings.add(currentStringArr);
     }
     return shiftedStrings;
   }
