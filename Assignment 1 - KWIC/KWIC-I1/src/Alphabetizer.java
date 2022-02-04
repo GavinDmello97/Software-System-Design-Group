@@ -3,9 +3,7 @@ import java.util.Collections;
 
 public class Alphabetizer {
 
-  public static ArrayList<String> alphabetize(
-    ArrayList<String> circularShifts
-  ) {
+  public ArrayList<String> alphabetize(ArrayList<String> circularShifts) {
     /* This was used for testing
         String array[] =  {"My name is Gavin D'mello", 
         "name is Gavin D'mello My", 
@@ -17,7 +15,7 @@ public class Alphabetizer {
                           Arrays.toString(array));
         */
 
-    Collections.sort(circularShifts);
+    Collections.sort(circularShifts, String.CASE_INSENSITIVE_ORDER);
     return circularShifts;
   }
 }
