@@ -1,4 +1,10 @@
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.OutputStreamWriter;
 
 public class App {
 
@@ -13,11 +19,37 @@ public class App {
     // .generateAllStrings("My name is Gavin D'mello");
     // // System.out.println(circularShiftResult);
 
-    // ArrayList<String> alphabetizerResult = new Alphabetizer()
-    // .alphabetize(circularShiftResult);
-    // System.out.println("\n\n");
+    ArrayList<String> alphabetizerResult = new Alphabetizer().alphabetize(circularShiftResult);
+    System.out.println("\n\n");
 
-    //Output
-    // displayOutput(alphabetizerResult);
+    
+    // Creat output file
+    File outputFile = new File("output.txt");
+    if (outputFile.createNewFile()){
+      System.out.println("Output File Created: "+ outputFile.getName());
+    }else{
+      System.out.println("Output File exists: "+ outputFile.getName());
+    }
+
+    // write string to a file, use DataOutputStream
+    FileOutputStream fos = new FileOutputStream(outputFile);
+    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+    bw.write(alphabetizerResult);
+    bw.close();
+    
+    //save results inside the output file
+    //outputFile.write(alphabetizerResult);
+
+    //Read from the file
+    Scanner myReader = new Scanner("output.txt");
+    while (myReader.hasNextLine()){
+      String reader = myReader.nextLine();
+      System.out.println(reader);
+    }
+    //outputFile.close();
+    myReader.close();
+
+
+    //displayOutput(alphabetizerResult);
   }
 }

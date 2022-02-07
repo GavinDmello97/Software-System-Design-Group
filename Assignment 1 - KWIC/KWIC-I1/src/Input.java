@@ -8,7 +8,7 @@ public class Input {
     int length = keyboard.nextInt();
     String[] inputArray = new String[length];
     keyboard.nextLine();
-    for (var i = 0; i < length; i++) {
+    for ( var i = 0; i < length; i++) {
       inputArray[i] = keyboard.nextLine();
     }
     return inputArray;
