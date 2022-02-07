@@ -17,7 +17,7 @@ public class Input {
     try {
       String currentLine;
       bReader = new BufferedReader(new FileReader("Input.txt"));
-      int i = 1;
+      int i = 0;
       while ((currentLine = bReader.readLine()) != null) {
         if (currentLine.length() > 0) {
           lineStorage.appendNewLine(currentLine, i); // pass line to Line Storage
