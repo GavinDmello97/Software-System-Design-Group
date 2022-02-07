@@ -10,21 +10,22 @@ public class CircularShifter {
 
   private static ArrayList<ArrayList<String>> shiftedStrings = new ArrayList<ArrayList<String>>();
 
-  private static ArrayList<ArrayList<String>> generateAllStrings(String[] stringArr) {
+  private static void generateAllStrings(String[] stringArr) {
     // ArrayList to store all the circular shifter strings
     
-
-    for (var p = 0; p < stringArr.length; p++) {
+    for (int p = 0; p < stringArr.length; p++) {
       ArrayList<String> currentStringArr = new ArrayList<String>();
       String string = stringArr[p];
       String[] input = string.split(" ");
       for (int i = 0; i < input.length; i++) {
         String[] shifted = rightShifter(input);
         System.out.println(shifted[0]);
+
+        /*Ignore the circular shifted string if it is not "interesting"*/
         if(shifted[0].equalsIgnoreCase("is") || shifted[0].equalsIgnoreCase("the") 
           || shifted[0].equalsIgnoreCase("of") || shifted[0].equalsIgnoreCase("and") 
           || shifted[0].equalsIgnoreCase("as") || shifted[0].equalsIgnoreCase("a")
-          || shifted[0].equalsIgnoreCase("after"))
+          || shifted[0].equalsIgnoreCase("after") || shifted[0].equalsIgnoreCase("are"))
         {
           continue;
         }
@@ -35,12 +36,13 @@ public class CircularShifter {
       }
       shiftedStrings.add(currentStringArr); // store the Arraylist of one line in the main ArrayList
     }
-    return shiftedStrings;
   }
 
-  public ArrayList<String> getLine(int lineNum)
+  /*Used to get a specified line from the list of circular shifted inputs*/
+  public static String getLine(String[] str, int sentenceNum, int lineNum)
   {
-    return shiftedStrings.get(0);
+    generateAllStrings(str);
+    return (shiftedStrings.get(sentenceNum).get(lineNum) + " ");
   }
 
   /* Move the first element to the last position */
@@ -53,20 +55,23 @@ public class CircularShifter {
     return input;
   }
 
+  /* This was used for testing the implementation
   public static void main(String[] args)
   {
-    ArrayList<ArrayList<String>> str = new ArrayList<ArrayList<String>>();
+    String str = " ";
     
-    String array[] =  {"My name is Kameron Jusseaume"};
-    str = generateAllStrings(array);
+    String array[] =  {"My name is Kameron Jusseaume", "we are code busters"};
+    str = getLine(array, 0, 1);
 
-    System.out.println(str.get(0));
+    System.out.println(str);
 
+    
     for (int i = 0; i < str.size(); i++) {
       for (int j = 0; j < str.get(i).size(); j++) {
           System.out.println(str.get(i).get(j) + " ");
       }
       System.out.println();
+    
   }
-  }
+  */
 }
