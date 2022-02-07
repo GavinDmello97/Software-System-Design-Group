@@ -10,6 +10,8 @@ import java.io.IOException;
 
 public class Input {
 
+  /* Reads the file and passes each read line to the Line Storage */
+  /* Supports Lazy Reading */
   public void readFile(LineStorage lineStorage) {
     BufferedReader bReader = null;
     try {
@@ -18,7 +20,7 @@ public class Input {
       int i = 1;
       while ((currentLine = bReader.readLine()) != null) {
         if (currentLine.length() > 0) {
-          lineStorage.appendNewLine(currentLine, i);
+          lineStorage.appendNewLine(currentLine, i); // pass line to Line Storage
           i++;
         }
       }

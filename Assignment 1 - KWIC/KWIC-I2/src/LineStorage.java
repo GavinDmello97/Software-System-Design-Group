@@ -14,18 +14,14 @@ public class LineStorage {
     return lines;
   }
 
+  /* Receives the string/line and the index of the line in the input file */
   public void appendNewLine(String line, int index) {
-    ArrayList<HashMap> tempArrayList = new ArrayList<HashMap>();
-    //copy original array into new array
-    for (int i = 1; i < lines.size() - 1; i++) tempArrayList.add(
-      lines.get(i + 1)
-    );
-    //add element to the new array
-    // tempArrayList.add(stringToObjectConverter(line, index));
-    System.out.println(stringToObjectConverter(line, index));
-    lines = tempArrayList;
+    //add new Dictionary/HashMap to the
+    lines.add(stringToObjectConverter(line, index));
+    System.out.println(lines);
   }
 
+  /* Converts input line into an LineObject with additional parameters */
   private HashMap stringToObjectConverter(String input, int index) {
     HashMap lineDictionary = new HashMap<>();
     lineDictionary.put("id", String.valueOf(index));
@@ -36,10 +32,12 @@ public class LineStorage {
     return lineDictionary;
   }
 
+  /* Calculates word count in a line */
   private int getWordCount(String input) {
     return input.split(" ").length;
   }
 
+  /* Converts an input line into an Array of word objects */
   private ArrayList<HashMap> getWordList(String input, int index) {
     ArrayList<HashMap> result = new ArrayList<HashMap>();
     String[] wordArray = input.split(" ");
@@ -48,7 +46,6 @@ public class LineStorage {
       wordDictionary.put("id", String.valueOf(i));
       wordDictionary.put("line_id", String.valueOf(index));
       wordDictionary.put("text", wordArray[i]);
-
       result.add(wordDictionary);
     }
 
