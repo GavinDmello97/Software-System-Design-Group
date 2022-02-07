@@ -1,3 +1,9 @@
+/*
+Gavin D'mello
+CIS 532-01 Assignment 1
+Implementation 1 -  Keyboard Input for multiple lines 
+*/
+
 import java.text.*;
 import java.util.*;
 

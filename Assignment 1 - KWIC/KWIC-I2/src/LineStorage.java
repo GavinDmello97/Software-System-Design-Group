@@ -1,3 +1,9 @@
+/*
+Gavin D'mello
+CIS 532-01 Assignment 1
+Implementation 1 -  Line Storage  
+*/
+
 public class LineStorage {
   private String[] lines = new String[] {};
 
