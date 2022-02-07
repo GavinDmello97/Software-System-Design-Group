@@ -4,28 +4,32 @@ CIS 532-01 Assignment 1
 Implementation 1 -  Keyboard Input for multiple lines 
 */
 
-import java.text.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Input {
 
   public void readFile(LineStorage lineStorage) {
-    new Timer()
-    .scheduleAtFixedRate(
-        new TimerTask() {
-
-          @Override
-          public void run() {
-            Date dNow = new Date();
-            SimpleDateFormat ft = new SimpleDateFormat(
-              "E yyyy.MM.dd 'at' hh:mm:ss a zzz"
-            );
-            lineStorage.appendNewLine("line " + ft.format(dNow));
-            // here goes your code to delay
-          }
-        },
-        0,
-        1000
-      );
+    BufferedReader bReader = null;
+    try {
+      String currentLine;
+      bReader = new BufferedReader(new FileReader("Input.txt"));
+      int i = 1;
+      while ((currentLine = bReader.readLine()) != null) {
+        if (currentLine.length() > 0) {
+          lineStorage.appendNewLine(currentLine, i);
+          i++;
+        }
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        if (bReader != null) bReader.close();
+      } catch (IOException ex) {
+        ex.printStackTrace();
+      }
+    }
   }
 }
