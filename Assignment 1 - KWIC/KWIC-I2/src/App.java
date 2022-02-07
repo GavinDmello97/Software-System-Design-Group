@@ -21,14 +21,15 @@ public class App {
   public static void main(String[] args) throws Exception {
     LineStorage lineStore = new LineStorage(); // Initialized LineStorage for Global use
     new Input().readFile(lineStore); // Initialized Input and called readFile function
-    // ArrayList<String> circularShiftResult = new CircularShifter()
-    // .generateAllStrings("My name is Gavin D'mello");
+     
+    
+    //passing input from circular shifter to Alphabetizer()
+    ArrayList<String> circularShiftResult = new CircularShifter().getLine();
     // System.out.println(circularShiftResult);
 
     ArrayList<String> alphabetizerResult = new Alphabetizer().alphabetize(circularShiftResult);
-    System.out.println("\n\n");
+    //System.out.println("\n\n");
 
-    
     // Creat output file
     File outputFile = new File("output.txt");
     if (outputFile.createNewFile()){
