@@ -3,20 +3,20 @@ CIS 532-01 Assignment 1
 Implementation 2 - Circular Shifter
 */
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 
 
 public class CircularShifter {
 
   private static ArrayList<ArrayList<String>> shiftedStrings = new ArrayList<ArrayList<String>>();
 
-  private static void generateAllStrings(String[] stringArr) {
+  private static void generateAllStrings(ArrayList<HashMap> str) {
     // ArrayList to store all the circular shifter strings
     
-    for (int p = 0; p < stringArr.length; p++) {
+    for (int p = 0; p < str.size(); p++) {
       ArrayList<String> currentStringArr = new ArrayList<String>();
-      String string = stringArr[p];
-      String[] input = string.split(" ");
+      HashMap string = str.get(p);
+      String[] input = (String[]) string.get("text");
       for (int i = 0; i < input.length; i++) {
         String[] shifted = rightShifter(input);
         System.out.println(shifted[0]);
@@ -39,9 +39,12 @@ public class CircularShifter {
   }
 
   /*Used to get a specified line from the list of circular shifted inputs*/
-  public static String getLine(String[] str, int sentenceNum, int lineNum)
+  public static String getLine(int sentenceNum, int lineNum)
   {
+    ArrayList<HashMap> str = new ArrayList<HashMap>();
+    str = LineStorage.getLines();
     generateAllStrings(str);
+
     return (shiftedStrings.get(sentenceNum).get(lineNum) + " ");
   }
 
@@ -55,13 +58,14 @@ public class CircularShifter {
     return input;
   }
 
-  /* This was used for testing the implementation
+  /* This was used for testing the implementation 
   public static void main(String[] args)
   {
-    String str = " ";
     
     String array[] =  {"My name is Kameron Jusseaume", "we are code busters"};
-    str = getLine(array, 0, 1);
+    ArrayList<HashMap> str = new ArrayList<HashMap>();
+    str = LineStorage.getLines();
+    System.out.println(str.get(0));
 
     System.out.println(str);
 
@@ -73,5 +77,6 @@ public class CircularShifter {
       System.out.println();
     
   }
-  */
+}
+*/
 }

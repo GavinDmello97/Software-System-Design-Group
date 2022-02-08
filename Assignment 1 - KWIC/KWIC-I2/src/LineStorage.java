@@ -8,9 +8,9 @@ Implementation 1 -  Line Storage
 */
 
 public class LineStorage {
-  private ArrayList<HashMap> lines = new ArrayList<HashMap>();
+  private static ArrayList<HashMap> lines = new ArrayList<HashMap>();
 
-  public ArrayList<HashMap> getLines() {
+  public static ArrayList<HashMap> getLines() {
     return lines;
   }
 
