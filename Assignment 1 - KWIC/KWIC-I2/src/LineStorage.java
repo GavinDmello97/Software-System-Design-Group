@@ -11,6 +11,7 @@ public class LineStorage {
   private static ArrayList<HashMap> lines = new ArrayList<HashMap>();
 
   public static ArrayList<HashMap> getLines() {
+
     return lines;
   }
 
@@ -18,7 +19,6 @@ public class LineStorage {
   public void appendNewLine(String line, int index) {
     //add new Dictionary/HashMap to the
     lines.add(stringToObjectConverter(line, index));
-    System.out.println(lines);
   }
 
   /* Converts input line into an LineObject with additional parameters */

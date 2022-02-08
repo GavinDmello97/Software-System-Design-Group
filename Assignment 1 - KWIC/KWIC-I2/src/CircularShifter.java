@@ -10,16 +10,15 @@ public class CircularShifter {
 
   private static ArrayList<ArrayList<String>> shiftedStrings = new ArrayList<ArrayList<String>>();
 
-  private static void generateAllStrings(ArrayList<HashMap> str) {
+  private static void generateAllStrings(HashMap str) {
     // ArrayList to store all the circular shifter strings
     
     for (int p = 0; p < str.size(); p++) {
       ArrayList<String> currentStringArr = new ArrayList<String>();
-      HashMap string = str.get(p);
-      String[] input = (String[]) string.get("text");
+      String[] input = (String[]) str.get("words");
       for (int i = 0; i < input.length; i++) {
         String[] shifted = rightShifter(input);
-        System.out.println(shifted[0]);
+        System.out.println("Shifted Lines:" + shifted);
 
         /*Ignore the circular shifted string if it is not "interesting"*/
         if(shifted[0].equalsIgnoreCase("is") || shifted[0].equalsIgnoreCase("the") 
@@ -39,13 +38,14 @@ public class CircularShifter {
   }
 
   /*Used to get a specified line from the list of circular shifted inputs*/
-  public static String getLine(int sentenceNum, int lineNum)
+  public ArrayList<ArrayList<String>> getLine(LineStorage lineStorage)
   {
-    ArrayList<HashMap> str = new ArrayList<HashMap>();
-    str = LineStorage.getLines();
-    generateAllStrings(str);
-
-    return (shiftedStrings.get(sentenceNum).get(lineNum) + " ");
+    ArrayList<HashMap> str = lineStorage.getLines();
+    for(int i = 0; i < str.size(); i++)
+    {
+      generateAllStrings(str.get(i));
+    }
+    return (shiftedStrings);
   }
 
   /* Move the first element to the last position */

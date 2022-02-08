@@ -15,7 +15,7 @@ public class App {
   public static void main(String[] args) throws Exception {
     LineStorage lineStore = new LineStorage(); // Initialized LineStorage for Global use
     new Input().readFile(lineStore); // Initialized Input and called readFile function
-    // ArrayList<String> circularShiftResult = new CircularShifter()
+    ArrayList<ArrayList<String>> circularShiftResult = new CircularShifter().getLine(lineStore);
     // .generateAllStrings("My name is Gavin D'mello");
     // System.out.println(circularShiftResult);
 
