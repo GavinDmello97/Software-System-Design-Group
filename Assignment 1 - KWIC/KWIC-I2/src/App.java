@@ -15,15 +15,9 @@ public class App {
   public static void main(String[] args) throws Exception {
     LineStorage lineStore = new LineStorage(); // Initialized LineStorage for Global use
     new Input().readFile(lineStore); // Initialized Input and called readFile function
-    ArrayList<ArrayList<String>> circularShiftResult = new CircularShifter().getLine(lineStore);
-    // .generateAllStrings("My name is Gavin D'mello");
-    // System.out.println(circularShiftResult);
-
-    // ArrayList<String> alphabetizerResult = new Alphabetizer()
-    // .alphabetize(circularShiftResult);
-    // System.out.println("\n\n");
-
-    //Output
-    // displayOutput(alphabetizerResult);
+    ArrayList<ArrayList<String>> circularShiftResult = new CircularShifter()
+      .shiftLines(lineStore)
+      .getAllLines();
+    System.out.println(circularShiftResult);
   }
 }

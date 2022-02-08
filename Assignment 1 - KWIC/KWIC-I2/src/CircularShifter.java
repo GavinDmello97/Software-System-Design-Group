@@ -5,76 +5,82 @@ Implementation 2 - Circular Shifter
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class CircularShifter {
+  private ArrayList<ArrayList<String>> shiftedStrings = new ArrayList<ArrayList<String>>();
 
-  private static ArrayList<ArrayList<String>> shiftedStrings = new ArrayList<ArrayList<String>>();
-
-  private static void generateAllStrings(HashMap str) {
-    // ArrayList to store all the circular shifter strings
-    
-    for (int p = 0; p < str.size(); p++) {
+  private void generateAllStrings(ArrayList<HashMap> listOfStringHashMaps) {
+    // ArrayList to store all the circular shifter lineHashMapings
+    for (int n = 0; n < listOfStringHashMaps.size(); n++) {
       ArrayList<String> currentStringArr = new ArrayList<String>();
-      String[] input = (String[]) str.get("words");
-      for (int i = 0; i < input.length; i++) {
-        String[] shifted = rightShifter(input);
-        System.out.println("Shifted Lines:" + shifted);
 
-        /*Ignore the circular shifted string if it is not "interesting"*/
-        if(shifted[0].equalsIgnoreCase("is") || shifted[0].equalsIgnoreCase("the") 
-          || shifted[0].equalsIgnoreCase("of") || shifted[0].equalsIgnoreCase("and") 
-          || shifted[0].equalsIgnoreCase("as") || shifted[0].equalsIgnoreCase("a")
-          || shifted[0].equalsIgnoreCase("after") || shifted[0].equalsIgnoreCase("are"))
-        {
+      HashMap lineHashMap = listOfStringHashMaps.get(n);
+      ArrayList<HashMap> wordsList = (ArrayList<HashMap>) lineHashMap.get(
+        "words"
+      );
+
+      for (int i = 0; i < wordsList.size(); i++) {
+        String currentString = "";
+
+        ArrayList<HashMap> shifted = rightShifter(wordsList);
+        String firstWord = (String) shifted.get(0).get("text");
+
+        /*Ignore the circular shifted lineHashMaping if it is not "interesting"*/
+        if (
+          firstWord.equalsIgnoreCase("is") ||
+          firstWord.equalsIgnoreCase("the") ||
+          firstWord.equalsIgnoreCase("of") ||
+          firstWord.equalsIgnoreCase("and") ||
+          firstWord.equalsIgnoreCase("as") ||
+          firstWord.equalsIgnoreCase("a") ||
+          firstWord.equalsIgnoreCase("after") ||
+          firstWord.equalsIgnoreCase("are")
+        ) {
           continue;
+        } else {
+          for (int q = 0; q < shifted.size(); q++) {
+            currentString += shifted.get(q).get("text").toString() + " ";
+          }
+          currentString.substring(0, shifted.size());
         }
-        else
-        {
-          currentStringArr.add(String.join(" ", shifted)); // Storing all shifted sentences of a single input line.
-        }
+        currentStringArr.add(currentString);
       }
       shiftedStrings.add(currentStringArr); // store the Arraylist of one line in the main ArrayList
     }
   }
 
   /*Used to get a specified line from the list of circular shifted inputs*/
-  public ArrayList<ArrayList<String>> getLine(LineStorage lineStorage)
-  {
-    ArrayList<HashMap> str = lineStorage.getLines();
-    for(int i = 0; i < str.size(); i++)
-    {
-      generateAllStrings(str.get(i));
-    }
-    return (shiftedStrings);
+  public CircularShifter shiftLines(LineStorage lineStorage) {
+    ArrayList<HashMap> listOfHashmaps = lineStorage.getLines();
+    generateAllStrings(listOfHashmaps);
+    return this;
+  }
+
+  public ArrayList<ArrayList<String>> getAllLines() {
+    return shiftedStrings;
   }
 
   /* Move the first element to the last position */
-  private static String[] rightShifter(String[] input) {
-    String tempStr = input[0];
-    for (int j = 0; j < input.length - 1; j++) {
-      input[j] = input[j + 1];
+  private ArrayList<HashMap> rightShifter(ArrayList<HashMap> input) {
+    HashMap tempStr = input.get(0);
+    for (int j = 0; j < input.size() - 1; j++) {
+      input.set(j, input.get(j + 1));
     }
-    input[input.length - 1] = tempStr;
+    input.set(input.size() - 1, tempStr);
     return input;
   }
-
   /* This was used for testing the implementation 
-  public static void main(String[] args)
+  public void main(String[] args)
   {
     
     String array[] =  {"My name is Kameron Jusseaume", "we are code busters"};
-    ArrayList<HashMap> str = new ArrayList<HashMap>();
-    str = LineStorage.getLines();
-    System.out.println(str.get(0));
+    ArrayList<HashMap> lineHashMap = new ArrayList<HashMap>();
+    lineHashMap = LineStorage.getLines();
 
-    System.out.println(str);
 
     
-    for (int i = 0; i < str.size(); i++) {
-      for (int j = 0; j < str.get(i).size(); j++) {
-          System.out.println(str.get(i).get(j) + " ");
+    for (int i = 0; i < lineHashMap.size(); i++) {
+      for (int j = 0; j < lineHashMap.get(i).size(); j++) {
       }
-      System.out.println();
     
   }
 }

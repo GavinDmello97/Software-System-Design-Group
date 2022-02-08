@@ -11,7 +11,6 @@ public class LineStorage {
   private static ArrayList<HashMap> lines = new ArrayList<HashMap>();
 
   public static ArrayList<HashMap> getLines() {
-
     return lines;
   }
 
