@@ -34,5 +34,6 @@ public class App {
 
     /* Print all the sorted lines */
     displayOutput(alphabetizerResult);
+    // Atefeh save "alphabetizerResult in file then read it from file"
   }
 }
