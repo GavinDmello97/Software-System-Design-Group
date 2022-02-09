@@ -68,21 +68,4 @@ public class CircularShifter {
     input.set(input.size() - 1, tempStr);
     return input;
   }
-  /* This was used for testing the implementation 
-  public void main(String[] args)
-  {
-    
-    String array[] =  {"My name is Kameron Jusseaume", "we are code busters"};
-    ArrayList<HashMap> lineHashMap = new ArrayList<HashMap>();
-    lineHashMap = LineStorage.getLines();
-
-
-    
-    for (int i = 0; i < lineHashMap.size(); i++) {
-      for (int j = 0; j < lineHashMap.get(i).size(); j++) {
-      }
-    
-  }
-}
-*/
 }

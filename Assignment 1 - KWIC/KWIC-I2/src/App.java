@@ -21,7 +21,6 @@ public class App {
   public static void displayOutput(ArrayList<String> resultArray)
     throws IOException {
     // resultArray.forEach(elem -> System.out.println(new String(elem)));
-
     // Creat output file
     String fileName = "Output.txt";
     FileWriter outputFile = new FileWriter(fileName);
