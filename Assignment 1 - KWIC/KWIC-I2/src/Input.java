@@ -18,8 +18,10 @@ public class Input {
       String currentLine;
       bReader = new BufferedReader(new FileReader("Input.txt"));
       int i = 0;
+      System.out.println("\n**Lines from Input file**");
       while ((currentLine = bReader.readLine()) != null) {
         if (currentLine.length() > 0) {
+          System.out.println(currentLine);
           lineStorage.appendNewLine(currentLine, i); // pass line to Line Storage
           i++;
         }
