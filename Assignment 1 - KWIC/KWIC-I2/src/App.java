@@ -12,16 +12,14 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class App {
 
+  /* Added all lines in Output.txt file */
   public static void displayOutput(ArrayList<String> resultArray)
     throws IOException {
-    // resultArray.forEach(elem -> System.out.println(new String(elem)));
-    // Creat output file
+    // Create output file
     String fileName = "Output.txt";
     FileWriter outputFile = new FileWriter(fileName);
     for (String str : resultArray) {
@@ -29,13 +27,11 @@ public class App {
     }
     outputFile.close();
 
-    //save results inside the output file
-    //outputFile.write(alphabetizerResult);
-
     //Read from the file
     readFile(fileName);
   }
 
+  /* reads it and prints all lines */
   public static void readFile(String fileName) {
     BufferedReader bReader1 = null;
     try {

@@ -1,11 +1,11 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-
 /*
 Gavin D'mello
 CIS 532-01 Assignment 1
 Implementation 1 -  Line Storage  
 */
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class LineStorage {
   private static ArrayList<HashMap> lines = new ArrayList<HashMap>();
