@@ -1,3 +1,9 @@
+/*
+Gavin D'mello
+CIS 532-01 Assignment 1
+Implementation 1 -  Main Controller 
+*/
+
 import java.util.ArrayList;
 
 public class App {
@@ -28,5 +34,6 @@ public class App {
 
     /* Print all the sorted lines */
     displayOutput(alphabetizerResult);
+    // Atefeh save "alphabetizerResult in file then read it from file"
   }
 }
