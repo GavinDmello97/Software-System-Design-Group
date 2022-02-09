@@ -4,58 +4,70 @@ CIS 532-01 Assignment 1
 Implementation 1 -  Master Control  
 */
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class App {
 
-  public static void displayOutput(ArrayList<String> resultArray) {
+  public static void displayOutput(ArrayList<String> resultArray)
+    throws IOException {
     // resultArray.forEach(elem -> System.out.println(new String(elem)));
+
+    // Creat output file
+    String fileName = "Output.txt";
+    FileWriter outputFile = new FileWriter(fileName);
+    for (String str : resultArray) {
+      outputFile.write(str + "\n");
+    }
+    outputFile.close();
+
+    //save results inside the output file
+    //outputFile.write(alphabetizerResult);
+
+    //Read from the file
+    readFile(fileName);
+  }
+
+  public static void readFile(String fileName) {
+    BufferedReader bReader1 = null;
+    try {
+      String currentLine;
+      bReader1 = new BufferedReader(new FileReader(fileName));
+      while ((currentLine = bReader1.readLine()) != null) {
+        if (currentLine.length() > 0) {
+          System.out.println(currentLine);
+        }
+      }
+    } catch (IOException e1) {
+      e1.printStackTrace();
+    } finally {
+      try {
+        if (bReader1 != null) bReader1.close();
+      } catch (IOException ex1) {
+        ex1.printStackTrace();
+      }
+    }
   }
 
   public static void main(String[] args) throws Exception {
     LineStorage lineStore = new LineStorage(); // Initialized LineStorage for Global use
     new Input().readFile(lineStore); // Initialized Input and called readFile function
-    // ArrayList<String> circularShiftResult = new CircularShifter()
-    // .generateAllStrings("My name is Gavin D'mello");
-    // System.out.println(circularShiftResult);
+    ArrayList<ArrayList<String>> circularShiftResult = new CircularShifter()
+      .shiftLines(lineStore)
+      .getAllLines();
 
-    ArrayList<String> alphabetizerResult = new Alphabetizer().alphabetize(circularShiftResult);
-    System.out.println("\n\n");
+    ArrayList<String> alphabetizerResult = new Alphabetizer()
+    .alphabetize(circularShiftResult);
 
-    
-    // Creat output file
-    File outputFile = new File("output.txt");
-    if (outputFile.createNewFile()){
-      System.out.println("Output File Created: "+ outputFile.getName());
-    }else{
-      System.out.println("Output File exists: "+ outputFile.getName());
-    }
-
-    // write string to a file, use DataOutputStream
-    FileOutputStream fos = new FileOutputStream(outputFile);
-    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-    bw.write(alphabetizerResult);
-    bw.close();
-    
-    //save results inside the output file
-    //outputFile.write(alphabetizerResult);
-
-    //Read from the file
-    Scanner myReader = new Scanner("output.txt");
-    while (myReader.hasNextLine()){
-      String reader = myReader.nextLine();
-      System.out.println(reader);
-    }
-    //outputFile.close();
-    myReader.close();
-
-
-    //displayOutput(alphabetizerResult);
+    displayOutput(alphabetizerResult);
   }
 }

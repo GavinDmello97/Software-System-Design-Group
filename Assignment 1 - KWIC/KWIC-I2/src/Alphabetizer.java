@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 //https://www.programcreek.com/2010/10/sort-content-in-a-file/
 
@@ -7,19 +9,33 @@ import java.util.Arrays;
 
 public class Alphabetizer {
 
-  public ArrayList<String> alphabetize(ArrayList<String> circularShifts) {
-    //Create a new arraylist to hold the alphabetized list
-    ArrayList<String> result = new ArrayList<String>(); //Atefeh - result instead circularShifts
-
-    // sorting each element of the array list using merge sort = Arrays.sort()
-    for (int i = 0; i < circularShifts.size(); i++) {
-      Arrays.sort(circularShifts.get(i), String.CASE_INSENSITIVE_ORDER);
-      for (int p = 0; p < circularShifts.get(i).size(); p++) {
-        result.add(circularShifts.get(i).get(p));
+  public ArrayList<String> alphabetize(
+    ArrayList<ArrayList<String>> listOfLinesList
+  ) {
+    ArrayList<String> result = new ArrayList<String>();
+    for (int p = 0; p < listOfLinesList.size(); p++) {
+      ArrayList load = listOfLinesList.get(p);
+      for (int q = 0; q < load.size(); q++) {
+        for (int r = q + 1; r < load.size(); r++) {
+          if (
+            load
+              .get(q)
+              .toString()
+              .toLowerCase()
+              .compareTo(load.get(r).toString().toLowerCase()) >
+            0
+          ) {
+            String temp = (String) load.get(q);
+            load.set(q, load.get(r));
+            load.set(r, temp);
+          }
+        }
+      }
+      for (int s = 0; s < load.size(); s++) {
+        result.add((String) load.get(s));
       }
     }
 
-    //return the ordered list to be stored and output by the main module
-    return result; //Atefeh - result instead circularShifts
+    return result;
   }
 }

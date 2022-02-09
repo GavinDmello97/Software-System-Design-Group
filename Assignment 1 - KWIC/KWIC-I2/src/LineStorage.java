@@ -8,9 +8,9 @@ Implementation 1 -  Line Storage
 */
 
 public class LineStorage {
-  private ArrayList<HashMap> lines = new ArrayList<HashMap>();
+  private static ArrayList<HashMap> lines = new ArrayList<HashMap>();
 
-  public ArrayList<HashMap> getLines() {
+  public static ArrayList<HashMap> getLines() {
     return lines;
   }
 
@@ -18,7 +18,6 @@ public class LineStorage {
   public void appendNewLine(String line, int index) {
     //add new Dictionary/HashMap to the
     lines.add(stringToObjectConverter(line, index));
-    System.out.println(lines);
   }
 
   /* Converts input line into an LineObject with additional parameters */
