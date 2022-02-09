@@ -33,6 +33,7 @@ public class App {
 
   /* reads it and prints all lines */
   public static void readFile(String fileName) {
+    System.out.println("\n\n**Result**");
     BufferedReader bReader1 = null;
     try {
       String currentLine;
