@@ -9,14 +9,16 @@ public class CircularShifter {
   private ArrayList<ArrayList<String>> shiftedStrings = new ArrayList<ArrayList<String>>();
 
   private void generateAllStrings(ArrayList<HashMap> listOfStringHashMaps) {
+
     // ArrayList to store all the circular shifter lineHashMapings
     for (int n = 0; n < listOfStringHashMaps.size(); n++) {
       ArrayList<String> currentStringArr = new ArrayList<String>();
 
+      // Get the list of strings from the list of lines from the input
       HashMap lineHashMap = listOfStringHashMaps.get(n);
-      ArrayList<HashMap> wordsList = (ArrayList<HashMap>) lineHashMap.get(
-        "words"
-      );
+
+      //get the individual words in the hashmap
+      ArrayList<HashMap> wordsList = (ArrayList<HashMap>) lineHashMap.get("words");
 
       for (int i = 0; i < wordsList.size(); i++) {
         String currentString = "";
@@ -37,6 +39,7 @@ public class CircularShifter {
         ) {
           continue;
         } else {
+          //add the currentstring to the running list
           for (int q = 0; q < shifted.size(); q++) {
             currentString += shifted.get(q).get("text").toString() + " ";
           }
