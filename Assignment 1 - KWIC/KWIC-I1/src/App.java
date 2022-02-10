@@ -17,7 +17,7 @@ public class App {
   }
 
   public static void main(String[] args) throws Exception {
-    System.out.println("\nKWIC Implementation 1");
+    System.out.println("\nKWIC Design 1 - Implementation 1");
     /* Getting input from user */
     String[] input = new Input().keyboard();
 
