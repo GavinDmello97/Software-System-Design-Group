@@ -15,6 +15,6 @@ class Controller:
 
         #     candidates.sort()  # move winning tuple to the end of the list
         #     winningExpert = candidates[-1][1]  # -1 means the last item in list.
-        #     winningExpert.execAction()
+        #     KSI.execAction()
 
         return self.blackboard.commonState["answer"]
