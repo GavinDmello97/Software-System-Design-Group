@@ -1,0 +1,4 @@
+animal eats meat
+animal gives milk
+animal has black stripes
+animal has tawny color
