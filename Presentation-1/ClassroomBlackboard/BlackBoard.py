@@ -7,5 +7,5 @@ class Blackboard:
         self.experts = []
         self.commonState = {}
 
-    def AddExpert(self, expert):
+    def addClassMember(self, expert):
         self.experts.append(expert)

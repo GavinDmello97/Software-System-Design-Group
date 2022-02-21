@@ -1,11 +1,11 @@
 # Contributors: Gavin
 
-from AbstractExpert import *
+from KnowledgeSource import *
 import random
 
 
 # Student knowledge source
-class Student(AbstractExpert):
+class Student(KnowledgeSource):
 
     # Checker to see if student can contribute
     def CanContribute(self):

@@ -1,10 +1,10 @@
 # Contributors: Gavin
 
-from AbstractExpert import *
+from KnowledgeSource import *
 import random
 
 
-class Teacher(AbstractExpert):
+class Teacher(KnowledgeSource):
 
     # the teacher can contribute if their answer value is over 10 as they would like to be confident
     # and give the student time to solve
@@ -18,6 +18,6 @@ class Teacher(AbstractExpert):
 
     def writeAnswerOnBoard(self):
         self.blackboard.commonState["answer"] += 1
-        print("Teacher execAction:", self.blackboard.commonState["answer"])
+        print("Answer:", self.blackboard.commonState['answer'])
         self.blackboard.commonState["answerCorrectness"] += 1
-        print("Teacher wrote the correct answer for question ", self.blackboard.commonState["answerCorrectness"]),
+        print("Teacher wrote the correct answer for question ", self.blackboard.commonState["answerCorrectness"],  "\n")

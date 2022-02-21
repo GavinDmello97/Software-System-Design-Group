@@ -7,8 +7,8 @@ from StudentKSI import *
 from TeacherKSI import *
 
 blackboard = Blackboard()
-blackboard.AddExpert(Student(blackboard))
-blackboard.AddExpert(Teacher(blackboard))
+blackboard.addClassMember(Student(blackboard))
+blackboard.addClassMember(Teacher(blackboard))
 c = Controller(blackboard)
 result = c.Loop()
 print("All the problems were solved")
