@@ -1,9 +1,11 @@
+// StudentDetail object structure
 class StudentDetail {
   String id;
   String name;
   boolean isGraduated;
   double GPA;
 
+  // StudentDetail Constructor
   StudentDetail(String id, String name, boolean isGraduated, double GPA) {
     this.id = id;
     this.name = name;
@@ -12,22 +14,27 @@ class StudentDetail {
   }
 }
 
+// Implemented class of Container class to override the base functions
 public class StudentDetailRepository implements Container {
   private boolean hasAtleastOneElement = false;
+  // automated generated list
   public StudentDetail[] studentDetails = DataSet.getStudentList();
 
+  // manually generated list
   //   public StudentDetail[] studentDetails = DataSet.studentDetails;
 
   @Override
   public Iterator getIterator(boolean isGraduated, boolean isFourPointer) {
-    return new NameIterator(isGraduated, isFourPointer);
+    return new StudentDetailIterator(isGraduated, isFourPointer);
   }
 
-  private class NameIterator implements Iterator {
+  // private iterator class
+  private class StudentDetailIterator implements Iterator {
     int index;
     boolean isGraduated, isFourPointer;
 
-    NameIterator(boolean isGraduated, boolean isFourPointer) {
+    // Constructor
+    StudentDetailIterator(boolean isGraduated, boolean isFourPointer) {
       this.isGraduated = isGraduated;
       this.isFourPointer = isFourPointer;
     }
@@ -82,6 +89,7 @@ public class StudentDetailRepository implements Container {
     }
   }
 
+  // print the student details
   private void print(int index) {
     System.out.println(
       String.format("%-12s", studentDetails[index].id) +

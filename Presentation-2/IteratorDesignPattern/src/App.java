@@ -19,6 +19,7 @@ public class App {
     );
 
     System.out.print("Graduated: ");
+    // input for graduate boolean/skip
     String temp1 = sc.nextLine();
 
     while (temp1.length() == 0 || temp1.charAt(0) != 'Y') {
@@ -32,6 +33,8 @@ public class App {
     }
 
     System.out.print("Four Pointer: ");
+    // input for fourPointer boolean/skip
+
     String temp2 = sc.nextLine();
 
     while (temp2.length() == 0 || temp2.charAt(0) != 'Y') {
@@ -45,17 +48,18 @@ public class App {
     }
     System.out.println();
 
-    // String sc.next();
+    // Object instance creation for access
     StudentDetailRepository studentDetailRepository = new StudentDetailRepository();
 
+    // Using iterator class to scan and parse through the dataset(list)
     for (
       Iterator iter = studentDetailRepository.getIterator(
         graduated,
         fourPointer
       );
-      iter.hasNext();
+      iter.hasNext(); // uses iterator to check if there is next element in the list
     ) {
-      iter.next();
+      iter.next(); // uses iterator to fetch next element in the list
     }
   }
 }
