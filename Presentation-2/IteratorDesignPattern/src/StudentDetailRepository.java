@@ -18,10 +18,10 @@ class StudentDetail {
 public class StudentDetailRepository implements Container {
   private boolean hasAtleastOneElement = false;
   // automated generated list
-  public StudentDetail[] studentDetails = DataSet.getStudentList();
+  // public StudentDetail[] studentDetails = DataSet.getStudentList();
 
   // manually generated list
-  //   public StudentDetail[] studentDetails = DataSet.studentDetails;
+  public StudentDetail[] studentDetails = DataSet.studentDetails;
 
   @Override
   public Iterator getIterator(boolean isGraduated, boolean isFourPointer) {
